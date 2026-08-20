@@ -1,6 +1,6 @@
 def linear_search(arr, key):
-    for i in range(len(arr)):
-        if arr[i] == key:
+    for i, value in enumerate(arr):
+        if value == key:
             return i
     return -1
 
@@ -28,7 +28,7 @@ def main():
     arr = list(map(int, input("Enter elements:\n").split()))
 
     if len(arr) != n:
-        print("The number of elements entered does not match n.")
+        print(f"Please enter exactly {n} elements.")
         return
 
     key = int(input("Enter element to search: "))
@@ -40,25 +40,25 @@ def main():
     choice = int(input("\nEnter your choice: "))
 
     if choice == 1:
-        pos = linear_search(arr, key)
+        position = linear_search(arr, key)
 
     elif choice == 2:
-        arr.sort()  # Binary search requires a sorted array
-        print("Sorted array:", arr)
-        pos = binary_search(arr, key)
+        if arr != sorted(arr):
+            print("\nBinary search requires the array to be sorted.")
+            return
+
+        position = binary_search(arr, key)
 
     else:
-        print("Invalid choice")
+        print("Invalid choice.")
         return
 
-    if pos == -1:
+    if position == -1:
         print("\nElement not found.")
     else:
-        print(f"\nElement found at position {pos + 1}")
+        print(f"\nElement found at position {position + 1}.")
 
 
 if __name__ == "__main__":
-    main() 
-
-
+    main()
     
