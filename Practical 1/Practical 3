@@ -1,0 +1,12 @@
+def main():
+    n = int(input("Enter number of elements: "))
+
+    # Read until we have n integers (handles multi-line input)
+    arr = []
+    while len(arr) < n:
+        arr.extend(map(int, input().split()))
+
+    arr = arr[:n]  # in case extra numbers are entered
+
+    heap_sort(arr)
+    print_array(arr)
