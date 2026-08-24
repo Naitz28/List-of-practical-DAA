@@ -31,6 +31,7 @@ def binary_search(arr, key):
 
 
 def main():
+     
     n = int(input("Enter number of elements: "))
 
     arr = list(map(int, input("Enter elements:\n").split()))
