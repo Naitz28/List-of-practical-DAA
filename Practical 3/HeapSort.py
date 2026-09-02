@@ -1,3 +1,20 @@
+# =========================================================
+# Heap Sort (Max Heap)
+#
+# Time Complexity:
+# Best Case    : O(n log n)
+# Average Case : O(n log n)
+# Worst Case   : O(n log n)
+#
+# Space Complexity:
+# O(1)
+#
+# Note:
+# Heap Sort first builds a Max Heap and then repeatedly
+# swaps the root (largest element) with the last element.
+# =========================================================
+
+# Function to heapify a subtree
 def heapify(arr, n, i):
     largest = i
     left = 2 * i + 1
