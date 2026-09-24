@@ -1,41 +1,46 @@
-# =========================================================
-# Heap Sort (Max Heap)
-#
-# Time Complexity:
-# Best Case    : O(n log n)
-# Average Case : O(n log n)
-# Worst Case   : O(n log n)
-#
-# Space Complexity:
-# O(1)
-#
-# Note:
-# Heap Sort first builds a Max Heap and then repeatedly
-# swaps the root (largest element) with the last element.
-# =========================================================
+"""
+=========================================================
+                     Heap Sort
 
-# Function to heapify a subtree
+Time Complexity:
+Best Case    : O(n log n)
+Average Case : O(n log n)
+Worst Case   : O(n log n)
+
+Space Complexity:
+O(1)
+
+Stable:
+No
+
+In-Place:
+Yes
+=========================================================
+"""
+
 def heapify(arr, n, i):
     largest = i
     left = 2 * i + 1
     right = 2 * i + 2
 
+    # Check if left child exists and is greater than root
     if left < n and arr[left] > arr[largest]:
         largest = left
 
+    # Check if right child exists and is greater than current largest
     if right < n and arr[right] > arr[largest]:
         largest = right
 
+    # Swap and continue heapifying if root is not the largest
     if largest != i:
         arr[i], arr[largest] = arr[largest], arr[i]
         heapify(arr, n, largest)
 
 
-# Heap Sort Function
 def heap_sort(arr):
     n = len(arr)
 
-    # Build Max Heap
+    # Build a max heap
     for i in range(n // 2 - 1, -1, -1):
         heapify(arr, n, i)
 
@@ -45,22 +50,19 @@ def heap_sort(arr):
         heapify(arr, i, 0)
 
 
-# Display Array
 def print_array(arr):
-    print("\nSorted Array:")
     print(*arr)
 
 
-# Main Function
-def main():
-    n = int(input("Enter number of elements: "))
+# Main Program
+n = int(input("Enter the size of the array: "))
 
-    arr = list(map(int, input("Enter elements:\n").split()))
+arr = list(map(int, input(f"Enter {n} elements: ").split()))
 
-    heap_sort(arr)
+print("\nOriginal Array:", end=" ")
+print_array(arr)
 
-    print_array(arr)
+heap_sort(arr)
 
-
-if __name__ == "__main__":
-    main()
+print("Sorted Array:", end=" ")
+print_array(arr)
